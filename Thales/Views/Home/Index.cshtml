@@ -1,0 +1,82 @@
+﻿@model HomeViewModel
+@{
+    ViewBag.Title = "Home";
+}
+
+
+<header class= "container">
+<div class="text-center">
+    <img src="~/images/thales.jpg" width="200" height="100" class="d-inline-block align-top mb-2 mt-1" />
+
+
+        <div id="carouselImages" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselImages" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselImages" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselImages" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/images/mat1.webp" width="250" height="350" class="d-block w-100" alt="Carousel image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/mat2.jpg" width="250" height="350" class="d-block w-100" alt="Carousel image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/mat3.jpg" width="250" height="350" class="d-block w-100" alt="Carousel image 3">
+                </div>
+            </div>
+        </div>
+
+
+
+    <h2>Actividades más populares</h2>
+    <h5>Las favoritas de todos</h5>
+    
+
+
+<div class="row" >
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var actividad in Model.ActividadesMasPopulares)
+        {
+            <div class="col">
+                <div class="card actividad-card">
+                            <img src="@actividad.ImageUrl" width="200" height="300" class="card-img-top" alt="@actividad.Name">
+                    <div class="card-body actividad-button">
+                        <h4 class="d-grid">
+                        </h4>
+
+                        <div class="d-flex justify-content-between mt-2">
+                            <h3 class="text-start">
+                                <a asp-controller="Actividad"
+                               asp-action="Details"
+                               asp-route-id="@actividad.ActividadId"
+                               class="actividad-link">@actividad.Name</a>
+                            </h3>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-2">
+                            <h6 class="text-nowrap">
+                                @actividad.Price.ToString("c")
+                            </h6>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                            <h6 class="text-nowrap">
+                                @actividad.EdadRecomendada
+                            </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                   }
+    
+    </div>
+
+        </div>
+
+
+</div>
+
+    
+
+</header>

@@ -1,0 +1,43 @@
+﻿@model ActividadListViewModel
+
+<header class="container">
+<h1>@Model.CurrentArea</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    
+    @foreach (var actividad in Model.Actividades)
+    {
+        <div class="col">
+            <div class="card actividad-card">
+                    <img src="@actividad.ImageUrl" width="200" height="300" class="card-img-top" alt="@actividad.Name">
+                <div class="card-body actividad-button">
+                    <h4 class="d-grid">
+                    </h4>
+
+                        <div class="d-flex justify-content-between mt-2">
+                        <h2 class="text-start">
+                            <a asp-controller="Actividad"
+                           asp-action="Details"
+                           asp-route-id="@actividad.ActividadId"
+                           class="actividad-link">@actividad.Name</a>
+                        </h2>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                        <h5 class="text-nowrap">
+                            @actividad.Price.ToString("c")
+                        </h5>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                        <h5 class="text-nowrap">
+                            @actividad.EdadRecomendada
+                        </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    }
+
+
+</div>
+</header>
